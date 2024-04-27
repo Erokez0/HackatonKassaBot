@@ -7,11 +7,11 @@ bot = telebot.TeleBot(TelegramBotKey)
 bot.set_webhook()
 state: int = 0
 
-qr_possible_statuses: dict[str:str] = {"NEW": "Заказ не оплачен ❌",
-                                       "IN_PROGRESS": "Заказ в процессе оплаты",
-                                       "CANCELLED": "Заказ отменён",
-                                       "EXPIRED": "Заказ устарел",
-                                       "PAID": "Заказ оплачен ✅"}
+qr_possible_statuses: dict[str:str] = {"NEW": "Заказ не оплачен  ❌",
+                                       "IN_PROGRESS": "Заказ в процессе оплаты ❌",
+                                       "CANCELLED": "Заказ отменён  ❌",
+                                       "EXPIRED": "Заказ устарел  ❌",
+                                       "PAID": "Заказ оплачен  ✅"}
 
 
 @bot.message_handler(commands=['qr_reg'])
@@ -32,9 +32,10 @@ def get_status(nomer_zakaza: str) -> str:
     :return: Строка с отформатированным статусом оплаты
     """
 
-    print(qr_possible_statuses.get(get_qr_status(nomer_zakaza)))
-    print(get_qr_status(nomer_zakaza))
-    return qr_possible_statuses.get(get_qr_status(nomer_zakaza))
+    if get_qr_status(nomer_zakaza) in qr_possible_statuses:
+        return qr_possible_statuses.get(get_qr_status(nomer_zakaza))
+    else:
+        return "Заказ не действителен ❌"
 
 
 @bot.message_handler(commands=['start', 'help'])
