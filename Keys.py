@@ -5,4 +5,4 @@ TelegramBotKey: str = 'Placeholder'
 sbpMerchantId: str = 'Placeholder'
 
 # Здесь требуется ввести secretKey
-secretKey: str = 'Placeholder' # noqa
+secretKey: str = 'Placeholder'
