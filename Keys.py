@@ -1,8 +1,8 @@
 # Здесь требуется ввести ключ для создания бота в Telegram
-TelegramBotKey: str = 'Placeholder'
+TelegramBotKey: str = ''
 
 # Здесь требуется ввести SPB Merchant ID
-sbpMerchantId: str = 'Placeholder'
+sbpMerchantId: str = ''
 
 # Здесь требуется ввести secretKey
-secretKey: str = 'Placeholder'
+secretKey: str = ''
