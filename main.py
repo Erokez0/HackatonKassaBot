@@ -61,7 +61,7 @@ def get_status_to_get_nomer(message) -> None:
     bot.send_message(message.chat.id, "Введите номер заказа")
 
 
-@bot.message_handler(content_types=['text'])
+@bot.message_handler(content_types=['text', 'help'])
 def get_status_to_user(message) -> None:
     """
     Отправляет статус оплаты пользователю
