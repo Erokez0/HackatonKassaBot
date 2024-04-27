@@ -37,14 +37,16 @@ def get_status(nomer_zakaza: str) -> str:
     return qr_possible_statuses.get(get_qr_status(nomer_zakaza))
 
 
-@bot.message_handler(commands=['start'])
+@bot.message_handler(commands=['start', 'help'])
 def start_message(message) -> None:
     """
     Стартовое сообщение
     :param message: Сообщение ТГ
     :return: Ничего
     """
-    bot.send_message(message.chat.id, "ТУТ ИНСТРУКЦИЯ")
+    bot.send_message(message.chat.id, "<b>Как пользоваться ботом?</b> \n\n"
+                                      "1. Нажать /get_status\n"
+                                      "2. Отправить ID QR-кода транзакции\n", parse_mode="HTML")
 
 
 @bot.message_handler(commands=['get_status'])
