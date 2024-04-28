@@ -14,7 +14,7 @@ qr_possible_statuses: dict[str:str] = {"NEW": "Заказ не оплачен  �
                                        "PAID": "Заказ оплачен  ✅"}
 
 
-@bot.message_handler(commands=['qr_reg'])
+@bot.message_handler(commands=['qr_reg'], chat_types=['group', 'supergroup'])
 def qr_reg_test(message) -> None:
     """
     Регистрирует QR-кода для тестировки и отправляет пользователю qrId и qrUrl
@@ -38,7 +38,7 @@ def get_status(nomer_zakaza: str) -> str:
         return "Заказ не действителен ❌"
 
 
-@bot.message_handler(commands=['start', 'help'])
+@bot.message_handler(commands=['start', 'help'], chat_types=['group', 'supergroup'])
 def start_message(message) -> None:
     """
     Стартовое сообщение
@@ -50,7 +50,7 @@ def start_message(message) -> None:
                                       "2. Отправить ID QR-кода транзакции\n", parse_mode="HTML")
 
 
-@bot.message_handler(commands=['get_status'])
+@bot.message_handler(commands=['get_status'], chat_types=['group', 'supergroup'])
 def get_status_to_get_nomer(message) -> None:
     """
     Получает статус
@@ -62,7 +62,7 @@ def get_status_to_get_nomer(message) -> None:
     bot.send_message(message.chat.id, "Введите номер заказа")
 
 
-@bot.message_handler(content_types=['text', 'help'])
+@bot.message_handler(content_types=['text', 'help'], chat_types=['group', 'supergroup'])
 def get_status_to_user(message) -> None:
     """
     Отправляет статус оплаты пользователю
